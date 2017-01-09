@@ -30,6 +30,14 @@ public class ProducerApp{
     }
 
     @Autowired
+    CassandraService cassandraService;
+
+    @RequestMapping("cassandra")
+    public void xassandraTest(){
+        cassandraService.simpleSelect();
+    }
+
+    @Autowired
     public ProducerApp(CamelConfig.CamelContextHolder camelContextHolder){
         sender = camelContextHolder.getCamelContext().createProducerTemplate();
         uri = directExchangeUri();
